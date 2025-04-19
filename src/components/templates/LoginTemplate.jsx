@@ -44,7 +44,7 @@ export function LoginTemplate() {
     <Container>
       <div className="contentLogo">
         <img src={logo2}></img>
-        <span>  Sistema Inventarios</span>
+        <span> JaLeo repuestos</span>
       </div>
       <div className="bannerlateral">
         <img src={carrito}></img>
@@ -59,9 +59,10 @@ export function LoginTemplate() {
           )}
           <span className="ayuda">
             {" "}
-            Puedes crear una cuenta nueva ó <br></br>solicitar una al administrador. <MdOutlineInfo />
+            Puedes crear una cuenta nueva ó <br></br>solicitar a tu empleador
+            una. <MdOutlineInfo />
           </span>
-          <p className="frase">Controla tu inventario</p>
+          <p className="frase">Controla tu inventario.</p>
           <form onSubmit={handleSubmit(iniciar)}>
             <InputText icono={<v.iconoemail />}>
               <input
@@ -72,7 +73,7 @@ export function LoginTemplate() {
                   required: true,
                 })}
               />
-              <label className="form__label">Correo</label>
+              <label className="form__label">email</label>
               {errors.correo?.type === "required" && <p>Campo requerido</p>}
             </InputText>
             <InputText icono={<v.iconopass />}>
@@ -84,11 +85,11 @@ export function LoginTemplate() {
                   required: true,
                 })}
               />
-              <label className="form__label">contraseña</label>
+              <label className="form__label">pass</label>
               {errors.pass?.type === "required" && <p>Campo requerido</p>}
             </InputText>
             <ContainerBtn>
-              <Btnsave titulo="Iniciar" bgcolor="#505196" />
+              <Btnsave titulo="Iniciar" bgcolor="#fc6b32" />
               <Btnsave
                 funcion={() => setState(!state)}
                 titulo="Crear cuenta"
@@ -119,10 +120,9 @@ const Container = styled.div`
     top: 15px;
     font-weight: 700;
     display: flex;
-    left: 45px;
+    left: 15px;
     align-items: center;
     color: #fff;
-    gap: 25px;
 
     img {
       width: 50px;
@@ -138,7 +138,7 @@ const Container = styled.div`
   }
 
   .bannerlateral {
-    background-color:rgb(145, 141, 139);
+    background-color: rgb(145, 141, 139);
     height: 100vh;
     display: flex;
     align-items: center;
@@ -187,15 +187,15 @@ const Container = styled.div`
       }
     }
     .frase {
-      color:rgb(81, 80, 150);
+      color: rgb(81, 80, 150);
       font-size: 1.5rem;
       font-weight: 700;
       margin-bottom: 30px;
     }
     .ayuda {
       position: absolute;
-      top: 10px;
-      right: 10px;
+      top: 15px;
+      right: 15px;
       color: #8d8d8d;
       font-size: 10px;
       font-weight: 500;

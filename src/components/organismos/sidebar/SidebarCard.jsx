@@ -1,16 +1,16 @@
 import styled from "styled-components";
-import { v, Btnsave} from "../../../index";
+import { v, Btnsave, useAuthStore } from "../../../index";
 export function SidebarCard() {
-  
+  const { signOut } = useAuthStore();
   return (
     <Container>
-      <span className="icon">{<v.iconoayuda />}</span>
       <div className="cardContent">
         <div className="circle1"></div>
         <div className="circle2"></div>
         <h3>Cerrar sesión</h3>
+
         <div className="contentBtn">
-          <Btnsave titulo="Cerrar" bgcolor="#f8f2fd"  />
+          <Btnsave funcion={signOut} titulo="Cerrar ..." bgcolor="#f8f2fd" />
         </div>
       </div>
     </Container>
@@ -21,7 +21,6 @@ const Container = styled.div`
   padding: 1rem;
   text-align: center;
   position: relative;
-
 
   .icon {
     position: absolute;
@@ -44,7 +43,7 @@ const Container = styled.div`
       position: absolute;
       background: ${(props) => props.theme.whiteBg};
       border-radius: 50%;
-      opacity: 0.4;
+      opacity: 0.7;
     }
     .circle1 {
       height: 100px;
@@ -66,8 +65,8 @@ const Container = styled.div`
       color: #000;
     }
     .contentBtn {
-      position:relative;
-      margin-left:5px;
+      position: relative;
+      margin-left: -8px;
     }
   }
 `;

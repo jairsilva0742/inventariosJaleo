@@ -7,7 +7,6 @@ export function ToggleTema() {
     setTheme((theme) => (theme === "light" ? "dark" : "light"));
   };
   return (
-    
     <Container>
       <div className="container">
         <label className="toggle">

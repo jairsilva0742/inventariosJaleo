@@ -1,18 +1,35 @@
 import styled from "styled-components";
 import { v } from "../../styles/variables";
 import { CardDatosEmpresa } from "../moleculas/CardDatosEmpresa";
+import { useEmpresaStore } from "../../store/EmpresaStore";
+import { useQuery } from "@tanstack/react-query";
+
 export function BannerEmpresa() {
+  const { dataempresa, contadorusuarios } = useEmpresaStore();
+
+  const { contarusuariosXempresa } = useEmpresaStore();
+  const { data } = useQuery({
+    queryKey: ["contar usuarios por empresa", { idempresa: dataempresa?.id }],
+    queryFn: () => contarusuariosXempresa({ id_empresa: dataempresa?.id }),
+    enabled: !!dataempresa,
+  });
   return (
     <Container>
       <div className="content-wrapper-context">
-        <span className="titulo">JaLeo Respuestos</span>
+        <span className="titulo">
+          {<v.iconoempresa />}
+          {dataempresa?.nombre}
+        </span>
         <div className="content-text">
-          En esta pagina puedes gestionar el inventario
+          En esta pagina puedes gestionar el inventario de tu empresa
         </div>
         <ContentCards>
-          <CardDatosEmpresa titulo="Moneda" valor="$" />
+          <CardDatosEmpresa
+            titulo="Moneda"
+            valor={dataempresa?.simbolomoneda}
+          />
 
-          <CardDatosEmpresa titulo="Usuarios" valor="100" />
+          <CardDatosEmpresa titulo="Usuarios" valor={data} />
         </ContentCards>
       </div>
       <svg
@@ -115,8 +132,8 @@ overflow: hidden;
 }
 `;
 const ContentCards = styled.div`
-display: flex;
-gap: 10px;
-padding-top: 15px;
-cursor: pointer;
+  display: flex;
+  gap: 10px;
+  padding-top: 15px;
+  cursor: pointer;
 `;

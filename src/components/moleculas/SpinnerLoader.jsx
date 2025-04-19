@@ -3,7 +3,7 @@ import styled from "styled-components";
 export function SpinnerLoader(){
     return(
         <Container>
-            <HashLoader color="#515096" size={170} />
+            <HashLoader color="#FFF140" size={200} />
         </Container>
     )
 }

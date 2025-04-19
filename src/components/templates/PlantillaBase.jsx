@@ -22,7 +22,7 @@ export function PlantillaBase() {
 const Container = styled.div`
   position: relative;
   overflow: hidden;
-  height: 100vh;
+  min-height: 100vh;
   width: 100%;
   background-color: ${(props) => props.theme.bgtotal};
   color: ${({ theme }) => theme.text};

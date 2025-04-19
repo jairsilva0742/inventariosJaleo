@@ -1,8 +1,10 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { supabase } from "../index";
+//Agregue null
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
+  //Agregue null
   const [user, setUser] = useState([]);
   useEffect(() => {
     const { data: authListener } = supabase.auth.onAuthStateChange(
@@ -11,6 +13,7 @@ export const AuthContextProvider = ({ children }) => {
         if (session?.user == null) {
           setUser(null);
         } else {
+          console.log("data del usuario", session?.user);
           setUser(session?.user);
         }
       }

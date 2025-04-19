@@ -15,7 +15,7 @@ export function FooterLogin() {
         <div className="separador"></div>
         <span>Todos los derechos reservados</span>
         <div className="separador"></div>
-        <span>© 2025 Jaleo</span>
+        <span>© 2024 Jaleo</span>
       </section>
     </Container>
   );
