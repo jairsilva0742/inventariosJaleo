@@ -56,7 +56,7 @@ export function KardexTemplate({ data }) {
       </header>
       <section className="area1">
         <ContentFiltro>
-          <Title>Kardex</Title>
+          <Title>Registrar Movimiento</Title>
           <Btnsave
             titulo="Entrada"
             bgcolor="#52de65"

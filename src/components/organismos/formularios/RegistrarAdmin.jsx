@@ -33,7 +33,7 @@ export function RegistrarAdmin({ setState }) {
   return (
     <Container>
       <ContentClose>
-        <span onClick={setState}>x</span>
+        <span onClick={setState}>Volver</span>
       </ContentClose>
       <section className="subcontainer">
         <div className="headers">
@@ -59,7 +59,7 @@ export function RegistrarAdmin({ setState }) {
                     pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i,
                   })}
                 />
-                <label className="form__label">email</label>
+                <label className="form__label">Correo electrónico</label>
                 {errors.correo?.type === "pattern" && (
                   <p>El formato del email es incorrecto</p>
                 )}
@@ -76,7 +76,7 @@ export function RegistrarAdmin({ setState }) {
                     required: true,
                   })}
                 />
-                <label className="form__label">pass</label>
+                <label className="form__label">Contraseña</label>
                 {errors.pass?.type === "required" && <p>Campo requerido</p>}
               </InputText>
             </article>
@@ -84,7 +84,7 @@ export function RegistrarAdmin({ setState }) {
               <Btnsave
                 icono={<v.iconoguardar />}
                 titulo="Guardar"
-                bgcolor="#ff7556"
+                bgcolor="#406281"
               />
             </div>
           </section>
