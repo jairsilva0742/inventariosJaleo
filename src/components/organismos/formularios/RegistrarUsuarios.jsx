@@ -135,7 +135,7 @@ export function RegistrarUsuarios({ onClose, dataSelect, accion }) {
                       required: true,
                     })}
                   />
-                  <label className="form__label">correo</label>
+                  <label className="form__label">correo electrónico</label>
                   {errors.correo?.type === "required" && <p>Campo requerido</p>}
                 </InputText>
               </article>
@@ -156,7 +156,7 @@ export function RegistrarUsuarios({ onClose, dataSelect, accion }) {
                       minLength: 6,
                     })}
                   />
-                  <label className="form__label">pass</label>
+                  <label className="form__label">Contraseña</label>
                   {errors.pass?.type === "required" && <p>Campo requerido</p>}
                   {errors.pass?.type === "minLength" && (
                     <p>Debe tener al menos 6 caracteres</p>
@@ -176,7 +176,7 @@ export function RegistrarUsuarios({ onClose, dataSelect, accion }) {
                     required: true,
                   })}
                 />
-                <label className="form__label">Nombres</label>
+                <label className="form__label">Nombre Completo</label>
 
                 {errors.nombres?.type === "required" && <p>Campo requerido</p>}
               </InputText>
@@ -184,7 +184,7 @@ export function RegistrarUsuarios({ onClose, dataSelect, accion }) {
             <ContainerSelector>
               <label>Tipo doc: </label>
               <Selector
-                color="#fc6027"
+                color="#406281"
                 texto1="🎴"
                 texto2={tipodoc.descripcion}
                 funcion={() => setStateTipodoc(!stateTipodoc)}
@@ -210,7 +210,7 @@ export function RegistrarUsuarios({ onClose, dataSelect, accion }) {
                     required: true,
                   })}
                 />
-                <label className="form__label">Nro. doc</label>
+                <label className="form__label">Nro. documento</label>
 
                 {errors.nrodoc?.type === "required" && <p>Campo requerido</p>}
               </InputText>
@@ -227,7 +227,7 @@ export function RegistrarUsuarios({ onClose, dataSelect, accion }) {
                     required: true,
                   })}
                 />
-                <label className="form__label">Telefono</label>
+                <label className="form__label">Teléfono</label>
 
                 {errors.telefono?.type === "required" && <p>Campo requerido</p>}
               </InputText>
@@ -243,7 +243,7 @@ export function RegistrarUsuarios({ onClose, dataSelect, accion }) {
                     required: true,
                   })}
                 />
-                <label className="form__label">Direccion</label>
+                <label className="form__label">Dirección Física</label>
 
                 {errors.direccion?.type === "required" && (
                   <p>Campo requerido</p>
@@ -255,7 +255,7 @@ export function RegistrarUsuarios({ onClose, dataSelect, accion }) {
             <ContainerSelector>
               <label>Tipo: </label>
               <Selector
-                color="#fc6027"
+                color="#406281"
                 texto1="👷‍♂️"
                 texto2={tipouser.descripcion}
                 funcion={() => setStateTipouser(!stateTipouser)}
@@ -281,7 +281,7 @@ export function RegistrarUsuarios({ onClose, dataSelect, accion }) {
             <Btnsave
               icono={<v.iconoguardar />}
               titulo="Guardar"
-              bgcolor="#ef552b"
+              bgcolor="#406281"
             />
           </div>
         </form>

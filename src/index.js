@@ -59,7 +59,7 @@ export * from "./components/organismos/FooterLogin";
 export * from "./components/organismos/ListaMenuDesplegable";
 export * from "./components/organismos/BannerEmpresa";
 export * from "./components/organismos/Header";
-export * from "./components/organismos/formularios/RegistrarAdmin";
+export * from "./components/organismos/formularios/RegistrarAdmin.jsx";
 
 export * from "./supabase/crudEmpresa";
 
