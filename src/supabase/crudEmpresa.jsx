@@ -20,3 +20,39 @@ export const ContarUsuariosXempresa = async (p) => {
     return data;
   }
 };
+
+export const ContarProductosXempresa = async (p) => {
+  const { data, error } = await supabase.rpc("contar_productos_por_empresa", {
+    _id_empresa: p.id_empresa,
+  });
+  if (data) {
+    return data;
+  }
+};
+
+export const CalcularInventarioXempresa = async (p) => {
+  const { data, error } = await supabase.rpc("calcular_valor_inventario", {
+    _id_empresa: p.id_empresa,
+  });
+  if (data) {
+    return data;
+  }
+};
+
+export const CostoInventarioXempresa = async (p) => {
+  const { data, error } = await supabase.rpc("calcular_costo_inventario", {
+    _id_empresa: p.id_empresa,
+  });
+  if (data) {
+    return data;
+  }
+};
+
+export const ContarStockBajoXempresa = async (p) => {
+  const { data, error } = await supabase.rpc("contar_productos_stock_bajo", {
+    _id_empresa: p.id_empresa,
+  });
+  if (data) {
+    return data;
+  }
+};

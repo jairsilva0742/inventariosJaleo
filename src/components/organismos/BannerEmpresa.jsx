@@ -5,12 +5,33 @@ import { useEmpresaStore } from "../../store/EmpresaStore";
 import { useQuery } from "@tanstack/react-query";
 
 export function BannerEmpresa() {
-  const { dataempresa, contadorusuarios } = useEmpresaStore();
+  const { dataempresa, contadorusuarios, contadorproductos, contadordinero } = useEmpresaStore();
 
-  const { contarusuariosXempresa } = useEmpresaStore();
-  const { data } = useQuery({
+  const { contarusuariosXempresa, costoinventarioXempresa, contarstockbajoXempresa } = useEmpresaStore();
+  const { contarproductosXempresa, calcularinventarioXempresa } = useEmpresaStore();
+  const { data: UsuariosEmpresa } = useQuery({
     queryKey: ["contar usuarios por empresa", { idempresa: dataempresa?.id }],
     queryFn: () => contarusuariosXempresa({ id_empresa: dataempresa?.id }),
+    enabled: !!dataempresa,
+  });
+  const { data: ProductosEmpresa } = useQuery({
+    queryKey: ["contar productos por empresa", { idempresa: dataempresa?.id }],
+    queryFn: () => contarproductosXempresa({ id_empresa: dataempresa?.id }),
+    enabled: !!dataempresa,
+  });
+  const { data: DineroEmpresa } = useQuery({
+    queryKey: ["Inventario en dinero por empresa", { idempresa: dataempresa?.id }],
+    queryFn: () => calcularinventarioXempresa({ id_empresa: dataempresa?.id }),
+    enabled: !!dataempresa,
+  });
+  const { data: CostoEmpresa } = useQuery({
+    queryKey: ["Costo de inventario por empresa", { idempresa: dataempresa?.id }],
+    queryFn: () => costoinventarioXempresa({ id_empresa: dataempresa?.id }),
+    enabled: !!dataempresa,
+  });
+  const { data: StockBajoEmpresa } = useQuery({
+    queryKey: ["Stock Bajo por empresa", { idempresa: dataempresa?.id }],
+    queryFn: () => contarstockbajoXempresa({ id_empresa: dataempresa?.id }),
     enabled: !!dataempresa,
   });
   return (
@@ -18,18 +39,36 @@ export function BannerEmpresa() {
       <div className="content-wrapper-context">
         <span className="titulo">
           {<v.iconoempresa />}
-          {dataempresa?.nombre}
+          
         </span>
         <div className="content-text">
           En esta pagina puedes gestionar el inventario de tu empresa
         </div>
         <ContentCards>
-          <CardDatosEmpresa
-            titulo="Moneda"
-            valor={dataempresa?.simbolomoneda}
-          />
+          
 
-          <CardDatosEmpresa titulo="Usuarios" valor={data} />
+          <CardDatosEmpresa titulo="Usuarios" valor={UsuariosEmpresa} />
+          <CardDatosEmpresa titulo="Productos" valor={ProductosEmpresa} />
+          <CardDatosEmpresa titulo="Stock Bajo" valor={StockBajoEmpresa} />
+          
+        </ContentCards>
+        <ContentCards>
+          <CardDatosEmpresa
+            titulo="Valor Inventario"
+            valor={new Intl.NumberFormat("es-CO", {
+               style: "currency",
+                currency: "COP",
+                maximumFractionDigits: 0,
+               }).format(DineroEmpresa)}
+          />
+          <CardDatosEmpresa
+            titulo="Costo Inventario"
+            valor={new Intl.NumberFormat("es-CO", {
+               style: "currency",
+                currency: "COP",
+                maximumFractionDigits: 0,
+               }).format(CostoEmpresa)}
+          />
         </ContentCards>
       </div>
       <svg

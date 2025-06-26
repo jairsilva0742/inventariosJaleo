@@ -82,7 +82,7 @@ export function ReporteKardex({ data }) {
                 marginBottom: 10,
               }}
             >
-              Movimientos de Kardex
+              Movimientos de Inventario
             </Text>
             <Text style={{ marginBottom: 10 }}>
               Fecha y Hora de Impresión: {formattedDate}

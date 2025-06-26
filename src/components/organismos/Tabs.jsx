@@ -14,7 +14,7 @@ export function Tabs() {
           className={activeTab == 0 ? "active" : ""}
           onClick={() => handleClick(0)}
         >
-          {<v.iconopie />}Kardex
+          {<v.iconopie />}Historial Movimientos
         </li>
 
         <span className="glider"></span>
@@ -58,7 +58,7 @@ const Container = styled.div`
       align-items: center;
       justify-content: center;
       height: 54px;
-      width: 180px;
+      width: 280px;
       font-size: 1.25rem;
       font-weight: 500;
       border-radius: 99px;
@@ -70,7 +70,7 @@ const Container = styled.div`
       color: "#fff";
       display: flex;
       height: 4px;
-      width: 180px;
+      width: 280px;
       background-color: #e05024;
       z-index: 1;
       border-radius: 15px;

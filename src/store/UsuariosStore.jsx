@@ -28,6 +28,11 @@ export const useUsuariosStore = create((set, get) => ({
       idauth: data.user.id,
       fecharegistro: new Date(),
       tipouser: "superadmin",
+      nombres: p.nombres,
+      correo: p.correo,
+      nro_doc: p.nrodoc,
+      telefono: p.telefono,
+      tipodoc: p.tipodoc,
     });
     return datauser;
   },

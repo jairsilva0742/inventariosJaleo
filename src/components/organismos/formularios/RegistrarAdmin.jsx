@@ -1,14 +1,16 @@
 import styled from "styled-components";
+import { useState } from "react";
 import { v } from "../../../styles/variables";
-import { InputText, Btnsave, useUsuariosStore } from "../../../index";
+import { InputText, Btnsave, useUsuariosStore, ContainerSelector, ListaGenerica,TipoDocData, Selector } from "../../../index";
 import { useForm } from "react-hook-form";
-import { MdAlternateEmail } from "react-icons/md";
-import { RiLockPasswordLine } from "react-icons/ri";
+import { MdAlternateEmail,MdAccountCircle,MdLocalPhone } from "react-icons/md";
+import { RiLockPasswordLine, RiFingerprintFill } from "react-icons/ri";
 import { useMutation } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
 export function RegistrarAdmin({ setState }) {
   const { insertarUsuarioAdmin } = useUsuariosStore();
-
+  const [tipodoc, setTipodoc] = useState({ icono: "", descripcion: "otros" });
+  const [stateTipodoc, setStateTipodoc] = useState(false);
   const navigate = useNavigate();
   const {
     register,
@@ -18,8 +20,12 @@ export function RegistrarAdmin({ setState }) {
   const mutation = useMutation({
     mutationFn: async (data) => {
       const p = {
+
+        nombres: data.nombre,
+        telefono: data.telefono,
         correo: data.correo,
         pass: data.pass,
+        nrodoc: data.nrodoc,
         tipouser: "superadmin",
       };
       const dt = await insertarUsuarioAdmin(p);
@@ -80,6 +86,70 @@ export function RegistrarAdmin({ setState }) {
                 {errors.pass?.type === "required" && <p>Campo requerido</p>}
               </InputText>
             </article>
+
+            <article>
+              <InputText icono={<MdAccountCircle />}>
+                <input
+                  className="form__field"
+                  type="text"
+                  placeholder="nombre"
+                  {...register("nombre", {
+                    required: true,
+                  })}
+                />
+                <label className="form__label">Nombre completo</label>
+                {errors.nombre?.type === "required" && <p>Campo requerido</p>}
+              </InputText>
+            </article>
+            <ContainerSelector>
+                          <label>Tipo doc: </label>
+                          <Selector
+                            color="#406281"
+                            texto1="🎴"
+                            texto2={tipodoc.descripcion}
+                            funcion={() => setStateTipodoc(!stateTipodoc)}
+                          />
+                          {stateTipodoc && (
+                            <ListaGenerica
+                              data={TipoDocData}
+                              bottom="-260px"
+                              scroll="scroll"
+                              setState={() => setStateTipodoc(!stateTipodoc)}
+                              funcion={(p) => setTipodoc(p)}
+                            />
+                          )}
+                        </ContainerSelector>
+
+            <article>
+              <InputText icono={<RiFingerprintFill />}>
+                <input
+                  className="form__field"
+                  type="text"
+                  placeholder="nrodoc"
+                  {...register("nrodoc", {
+                    required: true,
+                  })}
+                />
+                <label className="form__label">Número identificación</label>
+                {errors.nrodoc?.type === "required" && <p>Campo requerido</p>}
+              </InputText>
+            </article>
+
+            <article>
+              <InputText icono={<MdLocalPhone />}>
+                <input
+                  className="form__field"
+                  type="text"
+                  placeholder="telefono"
+                  {...register("telefono", {
+                    required: true,
+                  })}
+                />
+                <label className="form__label">Número telefónico</label>
+                {errors.telefono?.type === "required" && <p>Campo requerido</p>}
+              </InputText>
+            </article>
+
             <div className="btnguardarContent">
               <Btnsave
                 icono={<v.iconoguardar />}
@@ -128,13 +198,13 @@ const Container = styled.div`
   }
   .formulario {
     section {
-      gap: 20px;
+      gap: 12px;
       display: flex;
       flex-direction: column;
       .colorContainer {
         .colorPickerContent {
-          padding-top: 15px;
-          min-height: 50px;
+          padding-top: 10px;
+          min-height: 30px;
         }
       }
     }

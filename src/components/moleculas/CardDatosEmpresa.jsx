@@ -31,10 +31,10 @@ const Container = styled.div`
       display: flex;
       height: 100%;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 0.2rem;
       .pricing-plan {
         color: #05060f;
-        font-size: 1.3rem;
+        font-size: 1.1 rem;
         line-height: 1.25;
         font-weight: 700;
       }
