@@ -89,7 +89,11 @@ export function TablaProductos({
       enableSorting: false,
       cell: (info) => (
         <td data-title="P.venta" className="ContentCell">
-          <span>{info.getValue()}</span>
+          <span>{new Intl.NumberFormat("es-CO", {
+               style: "currency",
+                currency: "COP",
+                maximumFractionDigits: 0,
+               }).format(info.getValue())}</span>
         </td>
       ),
     },
@@ -99,7 +103,11 @@ export function TablaProductos({
       enableSorting: false,
       cell: (info) => (
         <td data-title="P.compra" className="ContentCell">
-          <span>{info.getValue()}</span>
+          <span>{new Intl.NumberFormat("es-CO", {
+               style: "currency",
+                currency: "COP",
+                maximumFractionDigits: 0,
+               }).format(info.getValue())}</span>
         </td>
       ),
     },
